@@ -17,7 +17,7 @@ RSpec.configure do |config|
     end
 
     Ingredient.all().each() do |ingredient|
-      category.destroy()
+      ingredient.destroy()
     end
   end
 end
