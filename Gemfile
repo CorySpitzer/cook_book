@@ -7,6 +7,7 @@ gem("rake")
 gem("pg")
 
 group(:test) do
+  gem('capybara', require: "capybara/rspec")
   gem("rspec")
   gem("pry")
 end

@@ -1,0 +1,12 @@
+<h2>Recipes</h2>
+
+<% if @recipes.any?() %>
+  <% @recipes.each() do |recipe| %>
+    <a href="/recipe/<%= recipe.id() %>"><%= recipe.name() %></a>
+    <br>
+  <% end %>
+<% else %>
+  <p>There aren't any recipes in your cookbook yet.
+    <br>
+    <a href="/recipe_form">Add a recipe.</a></p>
+<% end %>
