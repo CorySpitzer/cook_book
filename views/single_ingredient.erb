@@ -1,0 +1,10 @@
+<h2>Ingredient name: <%= @ingredient.name() %></h2>
+
+<% if @ingredient.recipes().any?() %>
+  <% @ingredient.recipes().each() do |recipe| %>
+    <a href="/recipe/<%= recipe.id() %>"><%= recipe.name() %></a>
+    <br>
+  <% end %>
+<% else %>
+<p>This ingredient hasn't been included in any recipes yet.</p>
+<% end %>

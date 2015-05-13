@@ -37,3 +37,8 @@ post('/recipe/:id') do
   recipe.ingredients.push(@ingredient)
   redirect("recipe/#{id}")
 end
+
+get('/ingredient/:id') do
+  @ingredient = Ingredient.find(params.fetch('id'))
+  erb(:single_ingredient)
+end
