@@ -1,6 +1,8 @@
+ENV['RACK_ENV'] = 'test'
+
 require('spec_helper')
-# require('./app')
 Capybara.app = Sinatra::Application
+require('./app')
 set(:show_exceptions, false)
 
 describe('the cookbook app', type: :feature) do
