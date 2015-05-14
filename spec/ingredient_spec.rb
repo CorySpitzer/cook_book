@@ -8,4 +8,9 @@ describe(Ingredient) do
     ingredient.recipes.push([recipe1, recipe2])
     expect(ingredient.recipes).to(eq([recipe1, recipe2]))
   end
+
+  it('has a name') do
+    ingredient = Ingredient.new(name: '')
+    expect(ingredient.save).to eq(false)
+  end
 end
