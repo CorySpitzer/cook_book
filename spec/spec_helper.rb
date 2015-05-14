@@ -1,3 +1,4 @@
+ENV['RACK_ENV'] = 'test'
 
 require("bundler/setup")
 Bundler.require(:default, :test)
@@ -17,6 +18,10 @@ RSpec.configure do |config|
 
     Ingredient.all().each() do |ingredient|
       ingredient.destroy()
+    end
+
+    Rating.all().each() do |rating|
+      rating.destroy()
     end
   end
 end

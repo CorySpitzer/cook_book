@@ -10,6 +10,7 @@ group(:test) do
   gem("rspec")
   gem("pry")
   gem('launchy')
+  gem('shoulda-matchers')
 end
 
 group(:production) do

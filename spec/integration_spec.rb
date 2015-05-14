@@ -27,7 +27,6 @@ describe('the cookbook app', type: :feature) do
     it('displays the instructions on the recipe page') do
       recipe = Recipe.create(name: 'bread', instructions: 'bake it')
       visit("/recipe/#{recipe.id}")
-# save_and_open_page
       expect(page).to(have_content(recipe.instructions))
     end
   end
