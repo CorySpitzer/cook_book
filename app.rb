@@ -23,8 +23,12 @@ end
 post('/recipes') do
   instructions = params.fetch('instructions')
   recipe_name = params.fetch('recipe_name')
-  @recipe = Recipe.create(name: recipe_name, instructions: instructions)
-  redirect('/recipes')
+  recipe = Recipe.create(name: recipe_name, instructions: instructions)
+  if recipe.valid?
+    redirect('/recipes')
+  else
+    redirect('/error')
+  end
 end
 
 get('/recipe/:id') do

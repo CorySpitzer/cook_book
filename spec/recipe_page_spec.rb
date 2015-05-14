@@ -43,7 +43,13 @@ describe('the recipe pages', type: :feature) do
     soup.ratings.create(value: 5)
     bread.ratings.create(value: 3)
     visit('/recipes')
-    expect(page).to have_content('soup bread')
+    expect(page).to have_content('soup - 5.0 bread - 3.0')
+  end
+
+  it('redirects to an error page if given blank inputs') do
+    visit('/recipe_form')
+    click_button('Add')
+    expect(page).to have_content('Error')
   end
 
 end
