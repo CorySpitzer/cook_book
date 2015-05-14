@@ -4,16 +4,9 @@ class Recipe < ActiveRecord::Base
   has_many(:ratings)
   validates(:name, presence: true)
   validates(:instructions, presence: true)
+  scope(:sort_by_rating, -> do
+    order(mean_rating: :desc)
+  end)
 
-  # def average_rating
-  #     sum = 0
-  #     self.ratings.each do |rating|
-  #       sum += rating.rating
-  #     end
-  #     sum.to_f/Rating.count(recipe_id: self.id)
-  # end
 
-  def average_rating
-    Rating.where(recipe_id: id).average("value")
-  end
 end

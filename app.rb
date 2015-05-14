@@ -8,7 +8,7 @@ get('/') do
 end
 
 get('/recipes') do
-  @recipes = Recipe.all()
+  @recipes = Recipe.all
   erb(:recipes)
 end
 

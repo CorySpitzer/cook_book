@@ -25,7 +25,7 @@ describe('the recipe pages', type: :feature) do
       recipe.ratings.create(value: 5)
       recipe.ratings.create(value: 4)
       visit("/recipe/#{recipe.id}")
-      expect(page).to have_content("Average rating: #{recipe.average_rating}")
+      expect(page).to have_content("Average rating: #{recipe.mean_rating}")
     end
 
     it('clicks a radio button') do
