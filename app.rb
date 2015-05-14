@@ -1,9 +1,12 @@
 require('bundler/setup')
 Bundler.require(:default, :production)
+require "pry"
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file}
+enable :sessions
 
 get('/') do
+  session[:message] = 'hello world'
   erb(:index)
 end
 
@@ -34,6 +37,9 @@ end
 get('/recipe/:id') do
   @recipe = Recipe.find(params.fetch('id'))
   @ingredients = Ingredient.all()
+  if session[:num_stars] == nil
+    session[:num_stars] = 0
+  end
   erb(:single_recipe)
 end
 
@@ -58,5 +64,12 @@ post('/rating/:recipe_id') do |id|
   recipe = Recipe.find(id)
   rating_value = params.fetch('rating_value').to_i
   recipe.ratings.create(value: rating_value)
+  redirect("/recipe/#{id}")
+end
+
+post('/star/:recipe_id/:i') do |id, num_stars|
+  session[:num_stars] = num_stars.to_i
+  recipe = Recipe.find(id)
+  recipe.ratings.create(value: num_stars.to_i)
   redirect("/recipe/#{id}")
 end

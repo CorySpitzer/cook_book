@@ -12,7 +12,7 @@
   <p>You haven't added any ingredients to this recipe yet.</p>
 <% end %>
 
-<form action="/rating/<%= @recipe.id %>" method="post">
+<!-- <form action="/rating/<%= @recipe.id %>" method="post">
   <input type='radio' name='rating_value' id = 'zero' value='0'>0
   <input type='radio' name='rating_value' id = 'one' value='1'>1
   <input type='radio' name='rating_value' id = 'two' value='2'>2
@@ -20,8 +20,23 @@
   <input type='radio' name='rating_value' id = 'four' value='4'>4
   <input type='radio' name='rating_value' id = 'five' value='5'>5
   <button name="submit">Rate</button>
+</form> -->
+<% (1..5).each do |i| %>
+<form action='/star/<%= @recipe.id %>/<%= i %>' method='post'>
+  <div style="float:left">
+  <% if i <= session[:num_stars] %>
+    <button type="submit" style='border: none' class="btn btn-default">
+      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+    </button>
+  <% else %>
+    <button type="submit" style='border: none' class="btn btn-default">
+      <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    </button>
+  <% end %>
+  </div>
 </form>
-
+<% end %>
+<div style="clear:both"></div>
 <h3>Average rating: <%= @recipe.mean_rating %></h3>
 
 
