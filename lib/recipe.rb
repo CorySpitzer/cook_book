@@ -2,6 +2,8 @@ class Recipe < ActiveRecord::Base
   has_and_belongs_to_many(:categories)
   has_and_belongs_to_many(:ingredients)
   has_many(:ratings)
+  validates(:name, presence: true)
+  validates(:instructions, presence: true)
 
   # def average_rating
   #     sum = 0

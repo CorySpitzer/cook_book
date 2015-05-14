@@ -18,4 +18,14 @@ describe(Recipe) do
       expect(recipe.average_rating).to(eq(3.5))
     end
   end
+
+  it('is not blank') do
+    recipe = Recipe.new(name: '', instructions: 'cook it')
+    expect(recipe.save).to eq(false)
+  end
+
+  it('has instructions') do
+    recipe = Recipe.new(name: 'rice', instructions: '')
+    expect(recipe.save).to eq(false)
+  end
 end
