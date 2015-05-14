@@ -2,7 +2,7 @@
 
 <p><%= @recipe.instructions() %></p>
 
-<h2>Ingredient list</h2>
+<h3>Ingredient list</h3>
 <% if @recipe.ingredients().any?() %>
   <% @recipe.ingredients().each() do |ingredient| %>
     <a href="/ingredient/<%= ingredient.id() %>"><%= ingredient.name() %></a>
@@ -12,7 +12,10 @@
   <p>You haven't added any ingredients to this recipe yet.</p>
 <% end %>
 
-<h2>Add ingredients to this recipe:</h2>
+<h3>Average rating: <%= @recipe.average_rating %></h3>
+
+
+<h3>Add ingredients to this recipe:</h3>
 
 <form action:'/recipe/<%= @recipe.id() %>' method="post">
   <div class="form-group">

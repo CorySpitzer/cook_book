@@ -41,4 +41,13 @@ describe('the cookbook app', type: :feature) do
     end
   end
 
+  describe('the rating path') do
+    it('displays the average rating for a recipe') do
+      recipe = Recipe.create(name: 'bread', instructions: 'bake it')
+      recipe.ratings.create(value: 5)
+      recipe.ratings.create(value: 4)
+      visit("/recipe/#{recipe.id}")
+      expect(page).to have_content("Average rating: #{recipe.average_rating}")
+    end
+  end
 end
