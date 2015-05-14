@@ -12,6 +12,6 @@ class Recipe < ActiveRecord::Base
   # end
 
   def average_rating
-    Rating.where(recipe_id: id).average("rating")
+    Rating.where(recipe_id: id).average("value")
   end
 end

@@ -13,8 +13,8 @@ describe(Recipe) do
   describe('#average_rating') do
     it("returns the average of all ratings for a recipe") do
       recipe = Recipe.create(name: 'bread', instructions: 'bake it')
-      recipe.ratings.create(rating: 4)
-      recipe.ratings.create(rating: 3)
+      recipe.ratings.create(value: 4)
+      recipe.ratings.create(value: 3)
       expect(recipe.average_rating).to(eq(3.5))
     end
   end
