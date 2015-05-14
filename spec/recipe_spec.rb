@@ -28,4 +28,13 @@ describe(Recipe) do
     recipe = Recipe.new(name: 'rice', instructions: '')
     expect(recipe.save).to eq(false)
   end
+
+  describe('.sort_by_rating') do
+    recipe1 = Recipe.create(name: 'bread', instructions: 'bake it')
+    recipe1.ratings.create(value: 4)
+    recipe2 = Recipe.create(name: 'soup', instructions: 'stew it')
+    recipe2.ratings.create(value: 5)
+    expect(Recipe.sort_by_rating).to(eq([recipe2, recipe1]))
+  end
+
 end

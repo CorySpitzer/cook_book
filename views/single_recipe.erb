@@ -12,17 +12,18 @@
   <p>You haven't added any ingredients to this recipe yet.</p>
 <% end %>
 
-<h3>Average rating: <%= @recipe.average_rating %></h3>
-
 <form action="/rating/<%= @recipe.id %>" method="post">
-  <input type='radio' name='rating_value' id = '0' value='0'>0
-  <input type='radio' name='rating_value' id = '1' value='1'>1
-  <input type='radio' name='rating_value' id = '2' value='2'>2
-  <input type='radio' name='rating_value' id = '3' value='3'>3
-  <input type='radio' name='rating_value' id = '4' value='4'>4
-  <input type='radio' name='rating_value' id = '5' value='5'>5
+  <input type='radio' name='rating_value' id = 'zero' value='0'>0
+  <input type='radio' name='rating_value' id = 'one' value='1'>1
+  <input type='radio' name='rating_value' id = 'two' value='2'>2
+  <input type='radio' name='rating_value' id = 'three' value='3'>3
+  <input type='radio' name='rating_value' id = 'four' value='4'>4
+  <input type='radio' name='rating_value' id = 'five' value='5'>5
   <button name="submit">Rate</button>
 </form>
+
+<h3>Average rating: <%= @recipe.average_rating %></h3>
+
 
 <h3>Add ingredients to this recipe:</h3>
 
