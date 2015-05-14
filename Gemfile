@@ -9,6 +9,7 @@ group(:test) do
   gem('capybara', require: "capybara/rspec")
   gem("rspec")
   gem("pry")
+  gem('launchy')
 end
 
 group(:production) do
