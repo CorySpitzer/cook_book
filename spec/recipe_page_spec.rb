@@ -52,4 +52,11 @@ describe('the recipe pages', type: :feature) do
     expect(page).to have_content('Error')
   end
 
+  it('redirects to an error page if given a blank input on the recipe page') do
+    recipe = Recipe.create(name: 'bread', instructions: 'bake it')
+    visit("/recipe/#{recipe.id}")
+    click_button('Add ingredient')
+    expect(page).to have_content('Error')
+  end
+
 end
