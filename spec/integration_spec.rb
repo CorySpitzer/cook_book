@@ -21,12 +21,25 @@ describe('the cookbook app', type: :feature) do
       click_button('Add')
       expect(page).to have_content('bread')
     end
+  end
 
+  describe('the individual recipe path') do
     it('displays the instructions on the recipe page') do
       recipe = Recipe.create(name: 'bread', instructions: 'bake it')
       visit("/recipe/#{recipe.id}")
-save_and_open_page
+# save_and_open_page
       expect(page).to(have_content(recipe.instructions))
     end
   end
+
+  describe('the individual ingredient path') do
+    it('displays the recipes that an ingredient is used in') do
+      recipe = Recipe.create(name: 'bread', instructions: 'bake it')
+      ingredient = Ingredient.create(name: 'salt')
+      ingredient.recipes.push(recipe)
+      visit("/ingredient/#{ingredient.id}")
+      expect(page).to have_content(recipe.name)
+    end
+  end
+
 end
