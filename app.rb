@@ -7,6 +7,10 @@ get('/') do
   erb(:index)
 end
 
+get('/error') do
+  erb(:error)
+end
+
 get('/recipes') do
   @recipes = Recipe.all
   erb(:recipes)
@@ -32,10 +36,13 @@ end
 post('/recipe/:id') do
   id = params.fetch('id')
   ingredient_name = params.fetch('ingredient_name')
-  @ingredient = Ingredient.create(name: ingredient_name)
   recipe = Recipe.find(id)
-  recipe.ingredients.push(@ingredient)
-  redirect("recipe/#{id}")
+  ingredient = recipe.ingredients.create(name:ingredient_name)
+  if ingredient.valid?
+    redirect("/recipe/#{id}")
+  else
+    redirect('/error')
+  end
 end
 
 get('/ingredient/:id') do

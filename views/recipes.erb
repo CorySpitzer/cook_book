@@ -2,7 +2,7 @@
 
 <% if @recipes.any?() %>
   <% Recipe.sort_by_rating.each() do |recipe| %>
-    <a href="/recipe/<%= recipe.id() %>"><%= recipe.name() %></a>
+    <a href="/recipe/<%= recipe.id() %>"><%= recipe.name() + ' - ' + recipe.mean_rating.to_s %></a>
     <br>
   <% end %>
 <% else %>
