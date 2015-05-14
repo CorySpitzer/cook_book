@@ -49,5 +49,16 @@ describe('the cookbook app', type: :feature) do
       visit("/recipe/#{recipe.id}")
       expect(page).to have_content("Average rating: #{recipe.average_rating}")
     end
+
+    it('clicks a radio button') do
+      recipe = Recipe.create(name: 'bread', instructions: 'bake it')
+      visit("/recipe/#{recipe.id}")
+      choose('1')
+      click_button('Rate')
+      expect(page).to have_content('Average rating: 1')
+    end
+
   end
+
+
 end

@@ -42,3 +42,10 @@ get('/ingredient/:id') do
   @ingredient = Ingredient.find(params.fetch('id'))
   erb(:single_ingredient)
 end
+
+post('/rating/:recipe_id') do |id|
+  recipe = Recipe.find(id)
+  rating_value = params.fetch('rating_value').to_i
+  recipe.ratings.create(value: rating_value)
+  redirect("/recipe/#{id}")
+end
