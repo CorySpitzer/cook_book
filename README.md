@@ -1,5 +1,6 @@
 Cookbook:
 A very tiny cookbook application
+
 By Cory Spitzer, Ben Cornelis, and Franz Knupfer
 
 * github.com/bencornelis/recipes
