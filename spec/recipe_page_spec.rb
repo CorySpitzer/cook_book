@@ -28,13 +28,13 @@ describe('the recipe pages', type: :feature) do
       expect(page).to have_content("Average rating: #{recipe.mean_rating}")
     end
 
-    it('clicks a radio button') do
-      recipe = Recipe.create(name: 'bread', instructions: 'bake it')
-      visit("/recipe/#{recipe.id}")
-      choose('one')
-      click_button('Rate')
-      expect(page).to have_content('Average rating: 1')
-    end
+    # it('clicks a radio button') do
+    #   recipe = Recipe.create(name: 'bread', instructions: 'bake it')
+    #   visit("/recipe/#{recipe.id}")
+    #   choose('one')
+    #   click_button('Rate')
+    #   expect(page).to have_content('Average rating: 1')
+    # end
   end
 
   it('lists the recipes in order of rating') do
